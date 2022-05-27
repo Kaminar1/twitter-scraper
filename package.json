@@ -1,0 +1,24 @@
+{
+  "name": "twitter-scraper",
+  "version": "1.0.0",
+  "description": "[ ] Go through all videos in the database  \r [ ] Fetch tweets (for this time period?) on a 'timeline'  \r [ ] Group tweets with videos that are posted in a set timeframe?  \r [ ] filter out tweets based on:",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaminar1/twitter-scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaminar1/twitter-scraper/issues"
+  },
+  "homepage": "https://github.com/Kaminar1/twitter-scraper#readme",
+  "dependencies": {
+    "twitter-api-v2": "^1.12.2"
+  }
+}
