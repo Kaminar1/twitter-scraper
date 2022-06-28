@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "[ ] Go through all videos in the database  \r [ ] Fetch tweets (for this time period?) on a 'timeline'  \r [ ] Group tweets with videos that are posted in a set timeframe?  \r [ ] filter out tweets based on:",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
