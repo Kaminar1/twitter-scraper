@@ -3,17 +3,22 @@
 [ ] Go through all videos in the database  
 [ ] Fetch tweets (for this time period?) on a 'timeline'  
 [ ] Group tweets with videos that are posted in a set timeframe?  
-[ ] filter out tweets based on:
+[ ] filter out tweets based on filter config:
 
 - has image
 - has at least one from a set of hastags
 - has at least one from a set of words/terms
 - a "reply" has link to the twitch?
-- has an exact matching phrase from a set
+- has an exact matching phrase from a Set
 
 As this might take a while to make 100% correct guesses linked to a `vod_id` in the database, make a backup solution in React to manually link with "best guesses".
 
 ## ![toodank](https://cdn.betterttv.net/emote/5ad22a7096065b6c6bddf7f3/1x) → ![dankies](https://cdn.betterttv.net/emote/5f92938a710f8302f0c8ee82/1x)
+
+Split into two parts:
+
+- Find tweets based on a filter, and save them to the database.
+- Go through the database and find matches from vod coll and tweets coll
 
 ---
 
