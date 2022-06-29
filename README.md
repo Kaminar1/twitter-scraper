@@ -112,3 +112,34 @@ Example of 2 _tweet-objects_ where the first is the reply to the second, only co
   }
 }
 ```
+
+media objects (timeline.includes.media)
+
+```json
+{
+  "media": [
+    {
+      "type": "video",
+      "duration_ms": 60001,
+      "preview_image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1541896013732057088/pu/img/Cq1vdwd1_nz6mslc.jpg",
+      "media_key": "7_1541896013732057088",
+      "height": 1080,
+      "width": 1920
+    },
+    {
+      "type": "photo",
+      "url": "https://pbs.twimg.com/media/FWXbe4mWQAI21lc.jpg",
+      "media_key": "3_1541879771080048642",
+      "height": 2100,
+      "width": 2100
+    },
+    {
+      "type": "photo",
+      "url": "https://pbs.twimg.com/media/FWXIOH4WYAEzqk7.jpg",
+      "media_key": "3_1541858592403382273",
+      "height": 1080,
+      "width": 1920
+    }
+  ]
+}
+```
