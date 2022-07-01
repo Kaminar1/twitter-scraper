@@ -3,6 +3,19 @@ import { TwitterApi } from "twitter-api-v2"
 import { auth, tweetFilter } from "./config.js"
 import { writeToJsonFile } from "./utils/fileHandler.js"
 
+/** Object with an extra field for reference
+ * @param  {import("twitter-api-v2").ReferencedTweetV2} reference
+ * @param  {import("twitter-api-v2").TweetV2} tweet
+ */
+class SubTweet {
+  constructor(reference, tweet) {
+    this.reference = reference
+
+    tweet.referenced_tweets = undefined
+    this.tweet = tweet
+  }
+}
+
 const twitterClient = new TwitterApi(auth.accessToken).readOnly.v2
 
 const user = await twitterClient.userByUsername("sagisawaria")
@@ -12,7 +25,6 @@ const timeline = await twitterClient.userTimeline(user.data.id, {
   "tweet.fields": [
     "attachments",
     "author_id",
-    "conversation_id",
     "created_at",
     "entities",
     "geo",
@@ -38,19 +50,30 @@ const timeline = await twitterClient.userTimeline(user.data.id, {
 })
 
 const passedBirbs = []
+
+/** @type {Map<string, SubTweet[]>} */
+const references = new Map()
+
 for await (const tweet of timeline) {
+  // put replies and quotes into reference Map, since these come before the original tweet.
+  const ref = tweet?.referenced_tweets?.[0]
+  if (ref?.type === "replied_to" || ref?.type === "quoted") {
+    if (!references.has(ref.id)) references.set(ref.id, new Array())
+    const storedReferences = references.get(ref.id)
+
+    const subTweet = new SubTweet(ref, tweet)
+    storedReferences.push(subTweet)
+
+    continue
+  }
+
   // has at least one of the hastags
   const hashtags = tweet?.entities?.hashtags?.map((tag) => tag.tag)
   if (
     !hashtags ||
-    !hashtags.some(
-      (e) => tweetFilter.atLeastOneMatch.hasHashtagsSome.indexOf(e) > -1
-    )
+    !hashtags.some((e) => tweetFilter.hasHashtagsSome.indexOf(e) > -1)
   )
     continue
-
-  // manually filter out replies, to increase max allowed tweet count
-  if (tweet?.referenced_tweets?.[0]?.type == "replied_to") continue
 
   /** @type {import("twitter-api-v2").MediaObjectV2} */
   let image = {}
@@ -71,10 +94,9 @@ for await (const tweet of timeline) {
   )
     continue
 
-  //   console.log(tweet.id, " => ", tweet.text, "\n", image)
-
   const birb = {
     ...tweet,
+    subtweets: references.get(tweet.id),
   }
   birb.entities.media = [image]
 
