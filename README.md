@@ -143,3 +143,35 @@ media objects (timeline.includes.media)
   ]
 }
 ```
+
+`replied_to` objects
+
+```json
+{
+  "possibly_sensitive": false,
+  "author_id": "1288894693527498754",
+  "source": "Twitter Web App",
+  "text": "https://t.co/Qjcj7IoKeU",
+  "lang": "zxx",
+  "id": "1541859038966816769",
+  "conversation_id": "1541858844481146881",
+  "entities": {
+    "urls": [
+      {
+        "start": 0,
+        "end": 23,
+        "url": "https://t.co/Qjcj7IoKeU",
+        "expanded_url": "https://www.twitch.tv/sagisawaria",
+        "display_url": "twitch.tv/sagisawaria"
+      }
+    ]
+  },
+  "created_at": "2022-06-28T19:00:15.000Z",
+  "referenced_tweets": [
+    {
+      "type": "replied_to",
+      "id": "1541858844481146881"
+    }
+  ]
+}
+```
