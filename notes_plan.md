@@ -1,15 +1,16 @@
 # twitter-scraper
 
 [ ] Go through all videos in the database  
-[ ] Fetch tweets (for this time period?) on a 'timeline'  
+[x] Fetch tweets (for this time period?) on a 'timeline'  
 [ ] Group tweets with videos that are posted in a set timeframe?  
-[ ] filter out tweets based on filter config:
+[x] filter out tweets based on filter config:
 
 - has image
 - has at least one from a set of hastags
-- has at least one from a set of words/terms
-- a "reply" has link to the twitch?
-- has an exact matching phrase from a Set
+
+* has at least one from a set of words/terms
+* a "reply" has link to the twitch?
+* has an exact matching phrase from a Set
 
 As this might take a while to make 100% correct guesses linked to a `vod_id` in the database, make a backup solution in React to manually link with "best guesses".
 
