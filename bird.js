@@ -12,7 +12,7 @@ class SubTweet {
     this.reference = reference
 
     tweet.referenced_tweets = undefined
-    this.tweet = tweet
+    this.body = tweet
   }
 }
 
